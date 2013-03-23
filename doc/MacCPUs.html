@@ -1,0 +1,866 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: MacCPUs
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (M)</a> &raquo;
+    
+    
+    <span class="title">MacCPUs</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: MacCPUs
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">mac/hardware.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Provides methods to query properties of the CPU in the computer.
+This module's methods will be mixed into <code>Hardware::CPU</code> on MacOS X.</p>
+
+<p>Several of these methods use info spewed out by sysctl.
+Look in <code>&lt;mach/machine.h&gt;</code> for decoding info.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="OPTIMIZATION_FLAGS-constant" class="">OPTIMIZATION_FLAGS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:penryn</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-march=core2 -msse4.1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:core2</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-march=core2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:core</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-march=prescott</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:g3</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-mcpu=750</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:g4</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-mcpu=7400</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:g4e</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-mcpu=7450</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:g5</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-mcpu=970</span><span class='tstring_end'>'</span></span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#altivec%3F-instance_method" title="#altivec? (instance method)">- (Boolean) <strong>altivec?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks for availability of the AltiVec instruction set.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bits-instance_method" title="#bits (instance method)">- (Fixnum) <strong>bits</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cores-instance_method" title="#cores (instance method)">- (Fixnum) <strong>cores</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The number of CPU cores available.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#family-instance_method" title="#family (instance method)">- (Symbol<sup>?</sup>) <strong>family</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Queries the family of CPU being used.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#optimization_flags-instance_method" title="#optimization_flags (instance method)">- (Hash) <strong>optimization_flags</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a hash containing optimization flags suitable for the
+hardware being used.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sse3%3F-instance_method" title="#sse3? (instance method)">- (Boolean) <strong>sse3?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks for availability of the SSE3 instruction set.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sse4%3F-instance_method" title="#sse4? (instance method)">- (Boolean) <strong>sse4?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks for availability of the SSE4 instruction set.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">- (Symbol) <strong>type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>:intel or :ppc.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="altivec?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>altivec?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks for availability of the AltiVec instruction set.
+This will be true on PowerPC processors G4 and newer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mac/hardware.rb', line 101</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_altivec?'>altivec?</span>
+  <span class='id identifier rubyid_type'>type</span> <span class='op'>==</span> <span class='symbol'>:ppc</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_family'>family</span> <span class='op'>!=</span> <span class='symbol'>:g3</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bits-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>bits</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92
+93
+94
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mac/hardware.rb', line 90</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bits'>bits</span>
+  <span class='kw'>return</span> <span class='ivar'>@bits</span> <span class='kw'>if</span> <span class='kw'>defined?</span> <span class='ivar'>@bits</span>
+
+  <span class='id identifier rubyid_is_64_bit'>is_64_bit</span> <span class='op'>=</span> <span class='id identifier rubyid_sysctl_bool'>sysctl_bool</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hw.cpu64bit_capable</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@bits</span> <span class='op'>||=</span> <span class='id identifier rubyid_is_64_bit'>is_64_bit</span> <span class='op'>?</span> <span class='int'>64</span> <span class='op'>:</span> <span class='int'>32</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cores-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>cores</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The number of CPU cores available</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the number of CPU cores available</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mac/hardware.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cores'>cores</span>
+  <span class='ivar'>@cores</span> <span class='op'>||=</span> <span class='backtick'>`</span><span class='tstring_content'>/usr/sbin/sysctl -n hw.ncpu</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="family-instance_method">
+  
+    - (<tt>Symbol</tt><sup>?</sup>) <strong>family</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Queries the family of CPU being used. Values are symbols, suitable
+for use with the <code>optimization_flags</code> hash.
+If the CPU family isn't recognized but is of a recognized CPU type,
+returns :dunno. Otherwise returns nil.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mac/hardware.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_family'>family</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>==</span> <span class='symbol'>:intel</span>
+    <span class='ivar'>@intel_family</span> <span class='op'>||=</span> <span class='backtick'>`</span><span class='tstring_content'>/usr/sbin/sysctl -n hw.cpufamily</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+    <span class='kw'>case</span> <span class='ivar'>@intel_family</span>
+    <span class='kw'>when</span> <span class='int'>0x73d67300</span> <span class='comment'># Yonah: Core Solo/Duo
+</span>      <span class='symbol'>:core</span>
+    <span class='kw'>when</span> <span class='int'>0x426f69ef</span> <span class='comment'># Merom: Core 2 Duo
+</span>      <span class='symbol'>:core2</span>
+    <span class='kw'>when</span> <span class='int'>0x78ea4fbc</span> <span class='comment'># Penryn
+</span>      <span class='symbol'>:penryn</span>
+    <span class='kw'>when</span> <span class='int'>0x6b5a4cd2</span> <span class='comment'># Nehalem
+</span>      <span class='symbol'>:nehalem</span>
+    <span class='kw'>when</span> <span class='int'>0x573B5EEC</span> <span class='comment'># Arrandale
+</span>      <span class='symbol'>:arrandale</span>
+    <span class='kw'>when</span> <span class='int'>0x5490B78C</span> <span class='comment'># Sandy Bridge
+</span>      <span class='symbol'>:sandybridge</span>
+    <span class='kw'>when</span> <span class='int'>0x1F65E835</span> <span class='comment'># Ivy Bridge
+</span>      <span class='symbol'>:ivybridge</span>
+    <span class='kw'>else</span>
+      <span class='symbol'>:dunno</span>
+    <span class='kw'>end</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>==</span> <span class='symbol'>:ppc</span>
+    <span class='ivar'>@ppc_family</span> <span class='op'>||=</span> <span class='backtick'>`</span><span class='tstring_content'>/usr/sbin/sysctl -n hw.cpusubtype</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+    <span class='kw'>case</span> <span class='ivar'>@ppc_family</span>
+    <span class='kw'>when</span> <span class='int'>9</span>
+      <span class='symbol'>:g3</span>  <span class='comment'># PowerPC 750
+</span>    <span class='kw'>when</span> <span class='int'>10</span>
+      <span class='symbol'>:g4</span>  <span class='comment'># PowerPC 7400
+</span>    <span class='kw'>when</span> <span class='int'>11</span>
+      <span class='symbol'>:g4e</span> <span class='comment'># PowerPC 7450
+</span>    <span class='kw'>when</span> <span class='int'>100</span>
+      <span class='symbol'>:g5</span>  <span class='comment'># PowerPC 970
+</span>    <span class='kw'>else</span>
+      <span class='symbol'>:dunno</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="optimization_flags-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>optimization_flags</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a hash containing optimization flags suitable for the
+hardware being used. The keys are in the same format as <code>CPU.family</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mac/hardware.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_optimization_flags'>optimization_flags</span><span class='semicolon'>;</span> <span class='const'>OPTIMIZATION_FLAGS</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sse3?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>sse3?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks for availability of the SSE3 instruction set.
+This will be true on all supported Intel processors.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mac/hardware.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sse3?'>sse3?</span>
+  <span class='id identifier rubyid_type'>type</span> <span class='op'>==</span> <span class='symbol'>:intel</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sse4?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>sse4?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks for availability of the SSE4 instruction set.
+This will be true on Intel processors newer than Core 2.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mac/hardware.rb', line 117</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sse4?'>sse4?</span>
+  <span class='id identifier rubyid_type'>type</span> <span class='op'>==</span> <span class='symbol'>:intel</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_family'>family</span> <span class='op'>!=</span> <span class='symbol'>:core</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_family'>family</span> <span class='op'>!=</span> <span class='symbol'>:core2</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="type-instance_method">
+  
+    - (<tt>Symbol</tt>) <strong>type</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>:intel or :ppc</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>:intel or :ppc</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mac/hardware.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='ivar'>@type</span> <span class='op'>||=</span> <span class='backtick'>`</span><span class='tstring_content'>/usr/sbin/sysctl -n hw.cputype</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='kw'>case</span> <span class='ivar'>@type</span>
+  <span class='kw'>when</span> <span class='int'>7</span>
+    <span class='symbol'>:intel</span>
+  <span class='kw'>when</span> <span class='int'>18</span>
+    <span class='symbol'>:ppc</span>
+  <span class='kw'>else</span>
+    <span class='symbol'>:dunno</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sat Mar 23 14:52:13 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

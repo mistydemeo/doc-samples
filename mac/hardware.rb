@@ -1,3 +1,10 @@
+##
+# Provides methods to query properties of the CPU in the computer.
+# This module's methods will be mixed into `Hardware::CPU` on MacOS X.
+# 
+# Several of these methods use info spewed out by sysctl.
+# Look in `<mach/machine.h>` for decoding info.
+
 module MacCPUs
   OPTIMIZATION_FLAGS = {
     :penryn => '-march=core2 -msse4.1',
@@ -8,10 +15,14 @@ module MacCPUs
     :g4e => '-mcpu=7450',
     :g5 => '-mcpu=970'
   }
+  ##
+  # Returns a hash containing optimization flags suitable for the
+  # hardware being used. The keys are in the same format as `CPU.family`.
+  # @return [Hash]
   def optimization_flags; OPTIMIZATION_FLAGS.dup; end
 
-  # These methods use info spewed out by sysctl.
-  # Look in <mach/machine.h> for decoding info.
+  ##
+  # @return [Symbol] :intel or :ppc
   def type
     @type ||= `/usr/sbin/sysctl -n hw.cputype`.to_i
     case @type
@@ -24,6 +35,12 @@ module MacCPUs
     end
   end
 
+  ##
+  # Queries the family of CPU being used. Values are symbols, suitable
+  # for use with the `optimization_flags` hash.
+  # If the CPU family isn't recognized but is of a recognized CPU type,
+  # returns :dunno. Otherwise returns nil.
+  # @return [Symbol, nil]
   def family
     if type == :intel
       @intel_family ||= `/usr/sbin/sysctl -n hw.cpufamily`.to_i
@@ -62,10 +79,14 @@ module MacCPUs
     end
   end
 
+  ##
+  # @return [Fixnum] the number of CPU cores available
   def cores
     @cores ||= `/usr/sbin/sysctl -n hw.ncpu`.to_i
   end
 
+  ##
+  # @return [Fixnum]
   def bits
     return @bits if defined? @bits
 
@@ -73,20 +94,35 @@ module MacCPUs
     @bits ||= is_64_bit ? 64 : 32
   end
 
+  ##
+  # Checks for availability of the AltiVec instruction set.
+  # This will be true on PowerPC processors G4 and newer.
+  # @return [Boolean]
   def altivec?
     type == :ppc && family != :g3
   end
 
+  ##
+  # Checks for availability of the SSE3 instruction set.
+  # This will be true on all supported Intel processors.
+  # @return [Boolean]
   def sse3?
     type == :intel
   end
 
+  ##
+  # Checks for availability of the SSE4 instruction set.
+  # This will be true on Intel processors newer than Core 2.
+  # @return [Boolean]
   def sse4?
     type == :intel && (family != :core && family != :core2)
   end
 
   protected
 
+  ##
+  # Queries the `sysctl` kernel state tool for a boolean value.
+  # @return [true] a boolean representing the sysctl value
   def sysctl_bool(property)
     result = nil
     IO.popen("/usr/sbin/sysctl -n #{property} 2>/dev/null") do |f|
